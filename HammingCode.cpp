@@ -72,6 +72,7 @@ vector<int> sendMessage(vector<int> &m,int r)
 
 void correctError(vector<int> &em,int ep)
 {
+    reverse(em.begin(), em.end());
     if(em[ep]==1)
     {
         em[ep]=0;
@@ -83,6 +84,7 @@ void correctError(vector<int> &em,int ep)
 
     //printing
     std::cout<<endl<<endl;
+    reverse(em.begin(), em.end());
     std::cout<<"THE CORRECTED MESSAGE IS :-"<<endl;
     for(int i=0;i<em.size();i++)
     {
@@ -93,19 +95,19 @@ void correctError(vector<int> &em,int ep)
 
 void checkMessage(vector<int> &m,int r)
 {
-    int errorPos=0,d=0;
+    int errorPos=0;
     vector<int> originalMessage=m;
     vector<int> errorLoc;
 
     reverse(m.begin(), m.end());
 
-    
+    int d=0;
     //traversing the whole message
     for(int j=0;j<m.size();j++)
     {
         int count1=0;
         //checking for the redundent bit
-        while(j==(pow(2,d)-1) && d<r)
+        while(j==(pow(2,d) -1) && d<r)
         {
             //finding the redundent bit
             for(int i=j;i<m.size();i=i+(2*(j+1))) 
